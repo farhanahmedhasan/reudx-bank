@@ -77,19 +77,6 @@ const rootReducer = combineReducers({
 
 const store = createStore(rootReducer)
 
-// store.dispatch({type:"account/deposit", payload: 500})
-// store.dispatch({type: "account/withdraw", payload:100})
-// console.log(store.getState())
-//
-// store.dispatch({type: "account/requestLoan", payload:{
-//     amount: 1000,
-//     purpose: "Buy a car"
-// }})
-// console.log(store.getState())
-//
-// store.dispatch({type:"account/payLoan"})
-// console.log(store.getState())
-
 //Action creator function
 function deposit(amount){
     return {type: "account/deposit", payload:amount}
