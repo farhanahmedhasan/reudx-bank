@@ -1,6 +1,6 @@
 import { useState } from "react";
 import {useDispatch, useSelector} from "react-redux";
-import {deposit, payloan, requestLoan, withdraw} from "./accountSlice.js";
+import {deposit, payLoan, requestLoan, withdraw} from "./accountSlice.js";
 
 function AccountOperations() {
     const [depositAmount, setDepositAmount] = useState("");
@@ -38,7 +38,7 @@ function AccountOperations() {
     }
 
     function handlePayLoan() {
-        dispatch(payloan())
+        dispatch(payLoan())
     }
 
     return (
@@ -76,21 +76,23 @@ function AccountOperations() {
                     </button>
                 </div>
 
-                <div>
-                    <label>Request loan</label>
-                    <input
-                        type="number"
-                        value={loanAmount}
-                        onChange={(e) => setLoanAmount(+e.target.value)}
-                        placeholder="Loan amount"
-                    />
-                    <input
-                        value={loanPurpose}
-                        onChange={(e) => setLoanPurpose(e.target.value)}
-                        placeholder="Loan purpose"
-                    />
-                    <button onClick={handleRequestLoan}>Request loan</button>
-                </div>
+                {currentLoan < 1 &&
+                    <div>
+                        <label>Request loan</label>
+                        <input
+                            type="number"
+                            value={loanAmount}
+                            onChange={(e) => setLoanAmount(+e.target.value)}
+                            placeholder="Loan amount"
+                        />
+                        <input
+                            value={loanPurpose}
+                            onChange={(e) => setLoanPurpose(e.target.value)}
+                            placeholder="Loan purpose"
+                        />
+                        <button onClick={handleRequestLoan}>Request loan</button>
+                    </div>
+                }
 
                 {currentLoan > 0 &&
                     <div>
